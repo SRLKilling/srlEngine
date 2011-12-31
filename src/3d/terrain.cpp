@@ -25,7 +25,7 @@
 #include <SRL/3D/terrain.hpp>
 #include <SRL/opengl/texture2d.hpp>
 #include <SRL/res.hpp>
-#include <SOIL.h>
+#include <SOIL/SOIL.h>
 
 #define coord(x, y) ((x)*width + (y))
 #define HeightMacro(x, y) ((float)heightmap[ coord(x, y) ])
