@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeader3dIMesh
 #define srlHeader3dIMesh
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/maths/vec3.hpp>
 
 namespace srl {

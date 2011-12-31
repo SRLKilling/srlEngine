@@ -22,11 +22,12 @@
 #ifndef srlHeaderObject
 #define srlHeaderObject
 
-#include <SRL/Environment.hpp>
-#include <SRL/maths/vec3.hpp>
+#include <SRL/environment.hpp>
+
 
 #include <SRL/sound/object.hpp>
 #include <SRL/3d/object.hpp>
+#include <SRL/maths/vec3.hpp>
 
 namespace srl {
 

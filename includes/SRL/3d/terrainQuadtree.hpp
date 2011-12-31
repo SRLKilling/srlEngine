@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderTerrainQuadtree
 #define DefineHeaderTerrainQuadtree
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/3D/terrainChunk.hpp>
 //#include <SRL/3D/BoundingBox.hpp>
 

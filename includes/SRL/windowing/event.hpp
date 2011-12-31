@@ -23,8 +23,8 @@
 
 #ifndef DefineHeaderEvent
 #define DefineHeaderEvent
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/maths/ivec2.hpp>
 
 namespace srl {

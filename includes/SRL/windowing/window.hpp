@@ -23,8 +23,7 @@
 
 #ifndef DefineHeaderWindow
 #define DefineHeaderWindow
-
-#include <SRL/Environment.hpp>
+#include <SRL/environment.hpp>
 
 #if defined(SRL_WIN)
 #	include <SRL/windowing/windowWin32.hpp>

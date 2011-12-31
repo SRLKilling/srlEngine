@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderVec3
 #define srlHeaderVec3
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/maths/vec2.hpp>
 #include <cmath>
 

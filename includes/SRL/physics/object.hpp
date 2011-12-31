@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderPhysicsObject
 #define srlHeaderPhysicsObject
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <btBulletDynamicsCommon.h>
 #include <SRL/maths/vec3.hpp>
 

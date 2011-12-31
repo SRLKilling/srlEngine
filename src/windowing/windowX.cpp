@@ -63,6 +63,7 @@ namespace srl {
 
 		Window::~Window() {
 			delete mContext;
+			
 		}
 		
 		
@@ -71,7 +72,7 @@ namespace srl {
 			for(int i = 0; i < queueSize; i++) {
 				XEvent* event = new XEvent();
 				XNextEvent(mDisplay, event);
-				for(std::vector<Window*>::iterator it = mWindowList.begin(); it != mWindowList.end(); it++) {
+				for(std::vector<Window*>::iterator it = mWindowList.begin(); it != mWindowList.end(); ++it) {
 					if((*it)->mWindow == event->xany.window) {
 						(*it)->addXEventToQueue(event);
 						break;

@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef DefineHeaderTerrain
 #define DefineHeaderTerrain
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/3d/terrainQuadtree.hpp>
 #include <SRL/OpenGL/VertexBuffer.hpp>
 #include <SRL/OpenGL/IndexBuffer.hpp>

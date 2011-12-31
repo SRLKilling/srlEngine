@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderIndexBuffer
 #define DefineHeaderIndexBuffer
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/opengl/extensions.hpp>
 #include <vector>
 

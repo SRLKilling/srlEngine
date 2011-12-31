@@ -20,17 +20,19 @@
 *                                                                                    *
 **************************************************************************************/
 
-#ifndef CLASS_XWINDOW_DEFINED
-#define CLASS_XWINDOW_DEFINED
 
-#include <SRL/Environment.hpp>
+#ifndef DefineHeaderXWindow
+#define DefineHeaderXWindow
+#include <SRL/environment.hpp>
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xos.h>
 #include <SRL/windowing/event.hpp>
-#include <SRL/maths/irect.hpp>
 #include <SRL/opengl/glxContext.hpp>
-
+#include <SRL/maths/irect.hpp>
+#include <vector>
+#include <queue>
 
 namespace srl {
 

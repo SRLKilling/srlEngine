@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeader3dMesh
 #define srlHeader3dMesh
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/maths/vec3.hpp>
 
 #include <SRL/3d/imesh.hpp>

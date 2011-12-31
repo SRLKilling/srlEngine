@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderBaseContainer
 #define srlHeaderBaseContainer
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/gui/layout.hpp>
 
 namespace srl {

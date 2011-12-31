@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef DefineHeaderLabel
 #define DefineHeaderLabel
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/gui/baseElement.hpp>
 #include <SRL/gui/font.hpp>
 

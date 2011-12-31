@@ -53,7 +53,7 @@ namespace srl {
 				gl::Context::getCurrent()->resizeViewport(mRect.w, mRect.h);
 				gl::Context::getCurrent()->setOrthogonalProj(0.0, (float)mRect.w, 0.0, (float)mRect.h, -1.0, 1.0);
 			}
-			for(std::list<gui::Window*>::iterator it = mWindowList.begin(); it != mWindowList.end(); it++) {
+			for(std::list<gui::Window*>::iterator it = mWindowList.begin(); it != mWindowList.end(); ++it) {
 				(*it)->eventHandler(event);
 			}
 		}
@@ -65,7 +65,7 @@ namespace srl {
 			gl::Context::getCurrent()->translate(0.0, mRect.h, 0.0);
 			gl::Context::getCurrent()->scale(1.0, -1.0, 1.0);
 			
-			for(std::list<gui::Window*>::iterator it = mWindowList.begin(); it != mWindowList.end(); it++) {
+			for(std::list<gui::Window*>::iterator it = mWindowList.begin(); it != mWindowList.end(); ++it) {
 				(*it)->render();
 			}
 			// mProgram->unuse();

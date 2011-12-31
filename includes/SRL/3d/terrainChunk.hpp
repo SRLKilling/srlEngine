@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderTerrainChunk
 #define DefineHeaderTerrainChunk
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/OpenGL/VertexBuffer.hpp>
 #include <vector>
 

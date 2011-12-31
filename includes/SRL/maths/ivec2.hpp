@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderIVec2
 #define srlHeaderIVec2
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <cmath>
 
 #ifdef srlNamespaceMaths

@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderBaseElement
 #define srlHeaderBaseElement
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/windowing/event.hpp>
 #include <SRL/maths/irect.hpp>
 

@@ -22,8 +22,7 @@
 
 #ifndef DefineHeaderITexture
 #define DefineHeaderITexture
-
-#include <SRL/Environment.hpp>
+#include <SRL/environment.hpp>
 
 namespace srl {
 

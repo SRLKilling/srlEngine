@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderFrameBuffer
 #define DefineHeaderFrameBuffer
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/opengl/extensions.hpp>
 #include <vector>
 

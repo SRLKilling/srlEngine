@@ -23,8 +23,8 @@
 
 #ifndef DefineHeaderContext
 #define DefineHeaderContext
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/maths/irect.hpp>
 #include <SRL/maths/mat4.hpp>
 #include <stack>

@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderFpsCamera
 #define srlHeaderFpsCamera
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/maths/vec3.hpp>
 
 namespace srl {

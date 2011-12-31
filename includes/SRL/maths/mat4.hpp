@@ -22,9 +22,10 @@
 
 #ifndef DefineHeaderMat4
 #define DefineHeaderMat4
+#include <SRL/environment.hpp>
 
 #include <SRL/maths/vec3.hpp>
-            #include <stdio.h>
+#include <stdio.h>
 
 namespace srl {
 

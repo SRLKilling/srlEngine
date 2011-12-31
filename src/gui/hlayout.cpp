@@ -38,7 +38,7 @@ namespace srl {
 			printf("Computing Horizontal Layout\n Size : %i ; %i\n", mInternalRect.w, mInternalRect.h);
 			//mInternalRect
 			int i = 0;
-			for(std::list<BaseElement*>::iterator it = mElements.begin(); it != mElements.end(); it++) {
+			for(std::list<BaseElement*>::iterator it = mElements.begin(); it != mElements.end(); ++it) {
 				printf("   Setting rect to : %i  %i  %i  %i\n", i*mInternalRect.w/mElements.size(), mInternalRect.y, (i+1)*mInternalRect.w/mElements.size(), mInternalRect.h);
 				(*it)->setRect(irect(i*mInternalRect.w/mElements.size(), mInternalRect.y, (i+1)*mInternalRect.w/mElements.size(), mInternalRect.h));
 				i++;

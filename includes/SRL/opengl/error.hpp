@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderGLError
 #define DefineHeaderGLError
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 
 namespace srl {
     

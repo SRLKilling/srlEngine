@@ -21,9 +21,9 @@
 **************************************************************************************/
 #ifndef srlHeaderLayout
 #define srlHeaderLayout
+#include <SRL/environment.hpp>
 
 #include <list>
-#include <SRL/Environment.hpp>
 #include <SRL/gui/baseElement.hpp>
 
 namespace srl {

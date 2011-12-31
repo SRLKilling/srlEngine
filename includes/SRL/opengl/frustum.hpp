@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderGlFrustum
 #define DefineHeaderGlFrustum
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/maths/vec4.hpp>
 #include <SRL/maths/mat4.hpp>
 

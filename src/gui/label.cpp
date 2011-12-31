@@ -66,7 +66,8 @@ namespace srl {
 					gl::AbstractVertexBuffer::getSquareBuffer()->bind();
 					gl::AbstractVertexBuffer::getSquareBuffer()->sendVertexAttribPointer(0, 2);
 					mFont->getTexCoordArray()->bind();
-					mFont->getTexCoordArray()->sendVertexAttribPointer(1, 2, glyph*8);
+					mFont->getTexCoordArray()->sendVertexAttribPointer(1, 2, glyph*8*4, true);
+					printf("%i * 8 = %i * 4 = %i\n\n", glyph, glyph*8, glyph*8*4);
 					glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 				gl::Context::getCurrent()->popModelview();
 				gl::Context::getCurrent()->translate(gi.advanceX, 0.0, 0.0);

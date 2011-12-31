@@ -21,8 +21,7 @@
 **************************************************************************************/
 #ifndef srlHeaderScene
 #define srlHeaderScene
-
-#include <SRL/Environment.hpp>
+#include <SRL/environment.hpp>
 
 #include <map>
 #include <string>

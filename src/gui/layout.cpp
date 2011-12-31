@@ -41,7 +41,7 @@ namespace srl {
 				mElements.push_front(element);
 			else {
 				int iteration = 0;
-				for(std::list<BaseElement*>::iterator it = mElements.begin(); it != mElements.end(); it++) {
+				for(std::list<BaseElement*>::iterator it = mElements.begin(); it != mElements.end(); ++it) {
 					if(iteration == pos) mElements.insert(it, element);
 					iteration++;
 				}
@@ -49,12 +49,12 @@ namespace srl {
 		}
 		
 		void Layout::eventHandler(win::Event event) {
-			for(std::list<BaseElement*>::iterator it = mElements.begin(); it != mElements.end(); it++)
+			for(std::list<BaseElement*>::iterator it = mElements.begin(); it != mElements.end(); ++it)
 				if((*it)->baseEventHandler(event)) break;
 		}
 		
 		void Layout::render() {
-			for(std::list<BaseElement*>::iterator it = mElements.begin(); it != mElements.end(); it++)
+			for(std::list<BaseElement*>::iterator it = mElements.begin(); it != mElements.end(); ++it)
 				(*it)->render();
 		}
 	

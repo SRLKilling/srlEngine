@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderTexture2D
 #define DefineHeaderTexture2D
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/opengl/itexture.hpp>
 
 namespace srl {

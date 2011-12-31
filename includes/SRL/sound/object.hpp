@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderSoundObject
 #define srlHeaderSoundObject
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 //#include <irrKlang.h>
 
 namespace srl {

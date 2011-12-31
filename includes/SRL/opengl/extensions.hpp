@@ -23,8 +23,8 @@
 
 #ifndef DefineHeaderExtensions
 #define DefineHeaderExtensions
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/opengl/error.hpp>
 
 #ifndef L3E_HOMEMADE_EXT

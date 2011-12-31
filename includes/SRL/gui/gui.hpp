@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderGUI
 #define srlHeaderGUI
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/windowing/window.hpp>
 #include <SRL/opengl/program.hpp>
 #include <SRL/gui/baseContainer.hpp>

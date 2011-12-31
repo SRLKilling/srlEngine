@@ -22,6 +22,7 @@
 
 #ifndef DefineHeaderMat3
 #define DefineHeaderMat3
+#include <SRL/environment.hpp>
 
 #include <SRL/maths/vec3.hpp>
 

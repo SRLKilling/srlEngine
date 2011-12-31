@@ -22,6 +22,7 @@
 
 #ifndef DefineHeaderProgram
 #define DefineHeaderProgram
+#include <SRL/environment.hpp>
 
 #include <SRL/opengl/shader.hpp>
 #include <SRL/opengl/itexture.hpp>

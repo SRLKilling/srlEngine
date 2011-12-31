@@ -21,8 +21,7 @@
 **************************************************************************************/
 #ifndef srlHeaderFont
 #define srlHeaderFont
-
-#include <SRL/Environment.hpp>
+#include <SRL/environment.hpp>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H

@@ -22,7 +22,7 @@
 
 #include <SRL/opengl/extensions.hpp>
 
-#ifdef L3E_HOMEMADE_EXT
+#ifdef SRL_HOMEMADE_EXT
 
 //-----------------------------------------------------------------------------
 // Shader Extensions

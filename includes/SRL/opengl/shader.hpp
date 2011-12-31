@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderShader
 #define DefineHeaderShader
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <string>
 
 namespace srl {

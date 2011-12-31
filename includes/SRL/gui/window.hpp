@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderGUIWindow
 #define srlHeaderGUIWindow
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/gui/baseContainer.hpp>
 
 namespace srl {

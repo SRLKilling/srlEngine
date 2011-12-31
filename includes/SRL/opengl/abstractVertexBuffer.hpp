@@ -22,11 +22,11 @@
 
 #ifndef DefineHeaderAbstractVertexBuffer
 #define DefineHeaderAbstractVertexBuffer
+#include <SRL/environment.hpp>
 
-#include <vector>
-#include <SRL/Environment.hpp>
 #include <SRL/opengl/extensions.hpp>
 #include <SRL/maths/vec3.hpp>
+#include <vector>
 
 namespace srl {
     

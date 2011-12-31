@@ -19,11 +19,9 @@
 *    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA    *
 *                                                                                    *
 **************************************************************************************/
-
-#include <SRL/Environment.hpp>
-
 #ifndef DefineHeaderWGLContext
 #define DefineHeaderWGLContext
+#include <SRL/environment.hpp>
 
 #include <SRL/opengl/context.hpp>
 #include <windows.h>

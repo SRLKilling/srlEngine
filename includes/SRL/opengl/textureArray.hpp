@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderTextureArray
 #define DefineHeaderTextureArray
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/opengl/itexture.hpp>
 #include <SRL/maths/rect.hpp>
 #include <vector>

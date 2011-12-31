@@ -22,8 +22,8 @@
 
 #ifndef DefineHeaderRes
 #define DefineHeaderRes
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/opengl/texture2d.hpp>
 #include <SRL/opengl/texturearray.hpp>
 #include <SRL/error.hpp>

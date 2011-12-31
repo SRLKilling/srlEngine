@@ -22,9 +22,9 @@
 
 #ifndef DefineHeaderVertexBuffer
 #define DefineHeaderVertexBuffer
+#include <SRL/environment.hpp>
 
 #include <vector>
-#include <SRL/Environment.hpp>
 #include <SRL/opengl/extensions.hpp>
 #include <SRL/opengl/abstractVertexBuffer.hpp>
 #include <SRL/maths/vec3.hpp>

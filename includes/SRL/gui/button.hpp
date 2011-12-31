@@ -21,8 +21,8 @@
 **************************************************************************************/
 #ifndef srlHeaderButton
 #define srlHeaderButton
+#include <SRL/environment.hpp>
 
-#include <SRL/Environment.hpp>
 #include <SRL/gui/baseElement.hpp>
 #include <SRL/maths/vec4.hpp>
 

@@ -105,8 +105,8 @@ namespace srl {
             if(mSize == 0)
                 srlReturnError(VertexBufferUnallocated, "Trying to send a vertex attrib pointer of an unallocated vertex buffer");
 				
-			 if(!isInByteSize)
-				 begin *= sizeof(float);
+			if(!isInByteSize)
+				begin *= sizeof(float);
 			
 			glEnableVertexAttribArray(index);
 			glVertexAttribPointer(index, component, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(begin));
