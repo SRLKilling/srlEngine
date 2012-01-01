@@ -32,45 +32,28 @@
 #include <SRL/opengl/abstractVertexBuffer.hpp>
 #include <SRL/maths/rect.hpp>
 #include <SRL/maths/ivec2.hpp>
+#include <map>
 
 namespace srl {
 	
 	namespace gui {
-	
+		
 		class Font {
 			public:
 				
-				struct GlyphInfo {
-					rect mRect;
-					rect mCoord;
-					int advanceX;
-					int advanceY;
+				struct SizedFontInfo {
+					gl::Texture2D* mTexture;
+					gl::AbstractVertexBuffer* mTexCoordBuffer;
+					int* mGlyphInfos;
 				};
 				
-				Font();
-				Font(std::string filename);
+				Font(std::string filename, int* glyphToEnable = NULL, int arraySize=0);
+				// Font(const Font& f);
+				~Font();
 				
-				void loadFont(std::string filename);
-				void renderFont();
-				
-				void bindFontTex();
-				int getGlyphId(short c);
-				GlyphInfo getGlyphInfo(int i);
-				gl::AbstractVertexBuffer* getTexCoordArray();
-				
-				/*void renderChar(short c, ivec2 pos=ivec2(0.0));
-				void renderString(short* str, ivec2 pos=ivec2(0.0));
-				void renderString(const wchar_t* str, ivec2 pos=ivec2(0.0));
-				void renderString(std::wstring str, ivec2 pos=ivec2(0.0));*/
-				
-				
-				void enableTable(short tablenum);
-				void enableGlyph(short c);
-				void enableGlyph(short a, short b);
-				void enableGlyph(short* c, int size);
-				void disableGlyph(short c);
-				void disableGlyph(short a, short b);
-				void disableGlyph(short* c, int size);
+				SizedFontInfo* operator[](int size);
+				SizedFontInfo* getFontBySize(int size);
+				int getGlyphIndex(short c);
 				
 			private:
 				static void initFreetypeLib();
@@ -78,14 +61,12 @@ namespace srl {
 				
 				
 				FT_Face mFontFace;
-				bool* mEnabledGlyph;
+				int mGlyphNum;
+				int* mCharToGlyph;
 				
-				gl::Texture2D* mTexture;
+				SizedFontInfo* render(int size);
+				std::map< int, SizedFontInfo* > mSizedFontInfoMap;
 				
-				int* mGlyphCorrespondingMap;
-				int mFinalGlyphArraySize;
-				GlyphInfo* mGlyphInfos;
-				gl::AbstractVertexBuffer* mTexCoordArray;
 		};
 		
 	};

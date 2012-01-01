@@ -26,4 +26,5 @@ uniform sampler2D fontTex;
 
 void main() {
 	fragcolor = vec4(0.2, 0.0, 8.0, 1.0) * texture2D(fontTex, texcoord).x; //vec4(1.0, 1.0, 0.0, 1.0);
+	// fragcolor = vec4(texcoord.s, 0.0, texcoord.t, 1.0);
 }

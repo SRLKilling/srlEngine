@@ -37,165 +37,84 @@ namespace srl {
 		FT_Library Font::mLibrary = NULL;
 		
 		
-		Font::Font(std::string filename) {
+		Font::Font(std::string filename, int* glyphToEnable, int arraySize) {
 			initFreetypeLib();
-			mFinalGlyphArraySize = 42;
-			mGlyphInfos = NULL;
-			loadFont(filename);
-		}
-		
-		void Font::loadFont(std::string filename) {
+			
 			FT_New_Face(mLibrary, filename.c_str(), 0, &mFontFace);
 			FT_Select_Charmap(mFontFace, FT_ENCODING_UNICODE);
-			mEnabledGlyph = new bool[mFontFace->num_glyphs];
-			for(int i = 0; i < mFontFace->num_glyphs; i++) mEnabledGlyph[i] = false;
+			
+			if(glyphToEnable != NULL) {
+				mGlyphNum = arraySize;
+				mCharToGlyph = new int[mGlyphNum];
+				memcpy(mCharToGlyph, glyphToEnable, mGlyphNum * sizeof(int));
+			}
+			else {
+				mGlyphNum = 0xFF;
+				mCharToGlyph = new int[0xFF];
+				for(int i = 0; i < 0xFF; ++i) mCharToGlyph[i] = i;
+			}
+		}
+		
+		Font::~Font() {
+			delete[] mCharToGlyph;
+			FT_Done_Face(mFontFace);
 		}
 		
 		
-		void Font::enableTable(short tablenum) {
-			enableGlyph(tablenum * 0xFF, (tablenum+1) * 0xFF);
+		
+		
+		Font::SizedFontInfo* Font::operator[](int size) {
+			return getFontBySize(size);
 		}
 		
-		void Font::enableGlyph(short c) {
-			mEnabledGlyph[FT_Get_Char_Index(mFontFace, c)] = true;
-		}
-		
-		void Font::enableGlyph(short a, short b) {
-			for(int i = a; i <= b; i++)
-				if(FT_Get_Char_Index(mFontFace, i) != 0) mEnabledGlyph[FT_Get_Char_Index(mFontFace, i)] = true;
-		}
-		
-		void Font::enableGlyph(short* c, int size) {
-			for(int i = 0; c[i] != size; i++)
-				if(FT_Get_Char_Index(mFontFace, c[i]) != 0) mEnabledGlyph[FT_Get_Char_Index(mFontFace, c[i])] = true;
-		}
-		
-		void Font::disableGlyph(short c) {
-			mEnabledGlyph[FT_Get_Char_Index(mFontFace, c)] = false;
-		}
-		
-		void Font::disableGlyph(short a, short b) {
-			for(int i = a; i < b; i++)
-				mEnabledGlyph[FT_Get_Char_Index(mFontFace, i)] = false;
-		}
-		
-		void Font::disableGlyph(short* c, int size) {
-			for(int i = 0; c[i] != size; i++)
-				mEnabledGlyph[FT_Get_Char_Index(mFontFace, c[i])] = false;
+		Font::SizedFontInfo* Font::getFontBySize(int size) {
+			std::map<int, SizedFontInfo*>::iterator it = mSizedFontInfoMap.find(size);
+			if(it == mSizedFontInfoMap.end())
+				return render(size);
+			
+			return it->second;
 		}
 		
 		
 		
 		
 		
-		
-		int Font::getGlyphId(short c) {
-			for(int i = 0; i < mFinalGlyphArraySize; i++)
-				if(mGlyphCorrespondingMap[i] == c) return i;
+		int Font::getGlyphIndex(short c) {
+			for(int i = 0; i < mGlyphNum; i++)
+				if(mCharToGlyph[i] == c) return i;
 			return 0;
 		}
 		
 		
-		Font::GlyphInfo Font::getGlyphInfo(int i) {
-			return mGlyphInfos[i];
-		}
-		
-		gl::AbstractVertexBuffer* Font::getTexCoordArray() {
-			return mTexCoordArray;
-		}
-		
-		/*void Font::renderChar(short c, ivec2 pos) {
-			short i = getGlyphId(c);
-			glColor3f(0.0, 1.0, 0.0);
-			glBegin(GL_QUADS);
-				float xmin = (float)pos.x + mGlyphInfos[i].mRect.x;
-				float xmax = xmin + mGlyphInfos[i].mRect.w;
-				float ymin = (float)pos.y + mGlyphInfos[i].mRect.y;
-				float ymax = ymin + mGlyphInfos[i].mRect.h;
-				
-				glTexCoord2f(mGlyphInfos[i].mCoord.x, mGlyphInfos[i].mCoord.y);
-				glVertex2f(xmin, ymax);
-				
-				glTexCoord2f(mGlyphInfos[i].mCoord.w, mGlyphInfos[i].mCoord.y);
-				glVertex2f(xmax, ymax);
-				
-				glTexCoord2f(mGlyphInfos[i].mCoord.w, mGlyphInfos[i].mCoord.h);
-				glVertex2f(xmax, ymin);
-				
-				glTexCoord2f(mGlyphInfos[i].mCoord.x, mGlyphInfos[i].mCoord.h);
-				glVertex2f(xmin, ymin);
-			glEnd();
-		}
-		
-		void Font::renderString(short* str, ivec2 pos) {
-			for(int i = 0; str[i]!='\0'; i++) {
-				renderChar(str[i], pos);
-				pos.x += mGlyphInfos[getGlyphId(str[i])].advanceX;
-			}
-		}
-		
-		void Font::renderString(const wchar_t* str, ivec2 pos) {
-			for(int i = 0; str[i]!='\0'; i++) {
-				renderChar(str[i], pos);
-				pos.x += mGlyphInfos[getGlyphId(str[i])].advanceX;
-			}
-		}
-		
-		void Font::renderString(std::wstring str, ivec2 pos) {
-			for(int i = 0; i < str.length(); i++) {
-				renderChar(str[i], pos);
-				pos.x += mGlyphInfos[getGlyphId(str[i])].advanceX;
-			}
-		}*/
-		
-
-		
-		void Font::bindFontTex() {
-			mTexture->bind();
-			gl::Context::getCurrent()->getCurrentProg()->uniform("fontTex", mTexture);
-		}
 		
 		
 		
 		
 		
 		
-		void Font::renderFont() {
-			FT_Set_Pixel_Sizes(mFontFace, 16, 16);
+		Font::SizedFontInfo* Font::render(int size) {
+			FT_Set_Pixel_Sizes(mFontFace, size, size);
 			
-			// Counting enabled glyphs and allocating correspondance and information arrays
-			mFinalGlyphArraySize = 0;
-			for(int i = 0; i < mFontFace->num_glyphs; i++)
-				if(mEnabledGlyph[i]) mFinalGlyphArraySize++;
-			
-			mGlyphCorrespondingMap = new int[mFinalGlyphArraySize];
-			mGlyphInfos = new GlyphInfo[mFinalGlyphArraySize];
-			printf("%i", mFinalGlyphArraySize);
-			mTexCoordArray = gl::AbstractVertexBuffer::getNewBuffer();
-			mTexCoordArray->bind();
-			mTexCoordArray->alloc(mFinalGlyphArraySize * 8);
-			
-			
-			
-			// Computing texture size and allocating pixelBuffer
-			int pixelNumber = 16 * 16 * mFinalGlyphArraySize;
+			// Computing texture size
+			int pixelNumber = size * size * mGlyphNum;
 			int squareSize = (int)ceil(sqrt((float)pixelNumber));
 			int texSize = 1;
 			while(texSize < squareSize)
 				texSize *= 2;
 				
+			
+			SizedFontInfo* mSizeFont = new SizedFontInfo;
+			mSizeFont->mTexCoordBuffer = gl::AbstractVertexBuffer::getNewBuffer();
+			mSizeFont->mTexCoordBuffer->bind();
+			mSizeFont->mTexCoordBuffer->alloc(mGlyphNum * 8);
+			mSizeFont->mGlyphInfos = new int[mGlyphNum * 3];
+			mSizeFont->mTexture = gl::Texture2D::getLuminanceTexture();
 			unsigned char* pixelBuffer = new unsigned char[texSize * texSize];
 			
-			
-			
 			int top = 0, left = 0;
-			int j = 0;
-			for(int i = 0; i < mFontFace->num_glyphs; i++) {
-				if(!mEnabledGlyph[i]) continue;
-				
-				
+			for(int i = 0; i < mGlyphNum; i++) {
 				// Loading glyph and updating pixelbuffer
-				FT_Load_Glyph(mFontFace, i, FT_LOAD_DEFAULT);
+				FT_Load_Char(mFontFace, mCharToGlyph[i], FT_LOAD_DEFAULT);
 				FT_Glyph glyph; FT_Get_Glyph(mFontFace->glyph, &glyph);
 				FT_Glyph_To_Bitmap(&glyph, FT_RENDER_MODE_NORMAL, 0, 1);
 				FT_BitmapGlyph bitmapGlyph = (FT_BitmapGlyph)glyph;
@@ -209,47 +128,37 @@ namespace srl {
 					buffer += bitmap.pitch;
 				}
 				
-				mGlyphCorrespondingMap[j] = i;
-				
 				
 				// Loading and updating glyph information (advance, internal rect, texture coordinates)
 				//mGlyphInfos[i].mRect = rect(bitmapGlyph->left, bitmapGlyph->top, bitmap.width, bitmap.rows);
-				mGlyphInfos[j].mRect = rect(0.0, 0.0, (float)bitmap.width, (float)bitmap.rows);
-				mGlyphInfos[j].mCoord = rect((float)left/(float)texSize, (float)top/(float)texSize, (float)(left+bitmap.width)/(float)texSize, (float)(top+bitmap.rows)/(float)texSize);
-				mGlyphInfos[j].advanceX =  mFontFace->glyph->advance.x >> 6;
-				// printf("%i  %i  %i\n", i, mFontFace->glyph->advance.x >> 6, mGlyphInfos[i].advanceX);
-				mGlyphInfos[j].advanceY =  mFontFace->glyph->advance.y >> 6;
-				//printf("0x%i   %f %f %f %f     %f %f %f %f\n", i, mGlyphInfos[i].mCoord.x, mGlyphInfos[i].mCoord.y, mGlyphInfos[i].mCoord.w, mGlyphInfos[i].mCoord.h, mGlyphInfos[i].mRect.x, mGlyphInfos[i].mRect.y, mGlyphInfos[i].mRect.w, mGlyphInfos[i].mRect.h);
+				mSizeFont->mGlyphInfos[i*3   ] = bitmap.width;
+				mSizeFont->mGlyphInfos[i*3 +1] = bitmap.rows;
+				mSizeFont->mGlyphInfos[i*3 +2] = mFontFace->glyph->advance.x >> 6;
 				
 				
 				float data[] = {(float)left/(float)texSize, 				(float)(top+bitmap.rows)/(float)texSize,
 								(float)left/(float)texSize, 				(float)top/(float)texSize,
-								(float)(left+bitmap.width)/(float)texSize, 	(float)top/(float)texSize,
-								(float)(left+bitmap.width)/(float)texSize,	(float)(top+bitmap.rows)/(float)texSize};
-				mTexCoordArray->sendData(j * 8, data, 8);
-				j++;
+								(float)(left+bitmap.width)/(float)texSize,	(float)(top+bitmap.rows)/(float)texSize,
+								(float)(left+bitmap.width)/(float)texSize, 	(float)top/(float)texSize};
+				mSizeFont->mTexCoordBuffer->sendData(i * 8, data, 8);
 				
 				
-				
-				FT_Done_Glyph((FT_Glyph)bitmapGlyph);
-			
-				left += 16;
+				left += size;
 				if(left >= texSize) {
 					left = 0;
-					top += 16;
+					top += size;
 				}
+				FT_Done_Glyph((FT_Glyph)bitmapGlyph);
 			}
 			
-			
-			FT_Done_Face(mFontFace);
-			
 			// Creating texture from the pixelbuffer
-			mTexture = gl::Texture2D::getLuminanceTexture();
-			mTexture->bind();
-			mTexture->create(texSize, texSize, pixelBuffer);
+			mSizeFont->mTexture->bind();
+			mSizeFont->mTexture->create(texSize, texSize, pixelBuffer);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			mTexture->unbind();
+			mSizeFont->mTexture->unbind();
+			
+			return mSizeFont;
 		}
 		
 	};

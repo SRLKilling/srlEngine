@@ -10,24 +10,9 @@ int main() {
 	gl::Ext::getInstance()->initAvailableExtensions();
 	
 	gui::Font* mMainFont = new gui::Font("C:\\Windows\\Fonts\\arial.ttf");
-	mMainFont->enableTable(0);
-	mMainFont->renderFont();
 	
-	/*srl::Button* mOk =  new srl::Button("OK");
-	srl::Button* mNon = new srl::Button("NON");
-	srl::HLayout* mLayout = new srl::HLayout();
-	mLayout->addElement(mOk);
-	mLayout->addElement(mNon);*/
-	
-	//srl::HLayout* mLayout = new srl::HLayout();
-	
-	//Spam::mGui->setLayout(mLayout);
-	
-	//srl::rublyb::init();
-	//srl::rublyb::doMain("main.rb");
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_BLEND);
-	
+	/*glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);*/
 		
 	gl::Context::getCurrent()->setOrthogonalProj(0.0, 800.0, 0.0, 600.0, -1.0, 1.0);
 	gl::Context::getCurrent()->useOrthogonal();

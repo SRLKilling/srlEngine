@@ -54,7 +54,9 @@ namespace srl {
 				ArchiveNotExists,
 				FileNotExists,
 				ArchiveAlreadyOpened,
-				BadArchiveEmptyConfig
+				BadArchiveEmptyConfig,
+				
+				NoFont
 				
 			};
 			

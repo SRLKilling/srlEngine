@@ -32,21 +32,23 @@ namespace srl {
 	
 		class Label : public BaseElement {
 			public:
-				Label(std::string str);
+				Label(std::string str, int charsize = 32);
 				Label(Label& label);
 				~Label();
-			
-				void setFont(Font* font);
-				Font* getFont();
 				
 				void render();
 				void eventHandler(win::Event event);
 				
-			private:
-				void computeStr();
+				void setFont(Font* font);
+				Font* getFont();
 				
+				void setCharSize(int charsize);
+				int getCharSize();
+				
+			private:
 				Font* mFont;
 				std::string mString;
+				int mCharSize;
 		};
 	
 	};
